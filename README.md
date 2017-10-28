@@ -1,2 +1,2 @@
-# titactoe-web
+# tictactoe-web
 Node js tic tac toe

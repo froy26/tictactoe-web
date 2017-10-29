@@ -1,0 +1,54 @@
+html {
+    background: darkcyan;
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    padding: 0px;
+    margin: 0px;
+}
+
+section {
+    padding: 10px 50px 10px 50px; 
+}
+
+
+.tiles {
+    background: purple;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: 1px solid darkorchid;
+    width: 300px;
+    height: 300px;
+}
+
+
+.tiles div {
+    border: 1px dashed darkorchid;
+    transition: background-color 0.5s ease;
+    width: 33.33333333333%;
+    height: 33.33333333333%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+}
+
+.tiles div.active{
+    background: magenta;
+}
+
+.tiles div:hover {
+    background: magenta;
+    transition: background-color 0.5s ease;
+    width: 33.33333333333%;
+    height: 33.33333333333%;
+    box-sizing: border-box;
+}
+
+.tiles div img {
+    width: 80%;
+    height: 80%;
+}

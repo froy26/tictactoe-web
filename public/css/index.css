@@ -14,7 +14,7 @@ section {
 }
 
 
-.tiles {
+.tiles_container {
     background: purple;
     display: flex;
     flex-direction: row;
@@ -25,7 +25,7 @@ section {
 }
 
 
-.tiles div {
+.tiles_container .tile {
     border: 1px dashed darkorchid;
     transition: background-color 0.5s ease;
     width: 33.33333333333%;
@@ -36,11 +36,27 @@ section {
     align-items: center;
 }
 
-.tiles div.active{
+.tiles_container .tile.active {
     background: magenta;
 }
 
-.tiles div:hover {
+.tiles_container .tile.active.o {
+    /*background: green;*/
+    background-image: url("/svg/circle.svg");
+    background-repeat: no-repeat;
+    background-size: 80% 80%;
+    background-position: center;
+}
+
+.tiles_container .tile.active.x {
+    /*background: blue;*/
+    background-image: url("/svg/cross.svg");
+    background-repeat: no-repeat;
+    background-size: 80% 80%;
+    background-position: center;
+}
+
+.tiles_container .tile:hover {
     background: magenta;
     transition: background-color 0.5s ease;
     width: 33.33333333333%;
@@ -48,7 +64,7 @@ section {
     box-sizing: border-box;
 }
 
-.tiles div img {
+.tiles_container .tile img {
     width: 80%;
     height: 80%;
 }

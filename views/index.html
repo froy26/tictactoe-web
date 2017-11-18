@@ -1,17 +1,21 @@
 <html>
     <head>
         <script
-        src="https://code.jquery.com/jquery-3.2.1.js"
-        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-        crossorigin="anonymous"></script>
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous">
+        </script>
+
+        <script src="/js/index.js"></script>
+
         <link href="css/index.css" rel="stylesheet" type="text/css"/>
 
         <script>
-            $(document).ready(function(){
+            /*$(document).ready(function(){
                 $(".tiles div").on("click", function(event) {
                     $(event.currentTarget).toggleClass("active");
                 });
-            });
+            });*/
             
         </script>
     </head>
@@ -24,18 +28,20 @@
         </section>
 
         <section>
-            <div class="tiles">                
-                <div>
-                    <img src="svg/cross.svg" alt="NONE"/>
+            <div class="tiles_container">
+                <div class="tile">
+                    <!--<img src="svg/cross.svg" alt="NONE"/>-->
                 </div>
-                <div><img src="svg/circle.svg" alt="NONE"></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+                <div class="tile">
+                    <!--<img src="svg/circle.svg" alt="NONE">-->
+                </div>
+                <div class="tile"></div>
+                <div class="tile active x"></div>
+                <div class="tile"></div>
+                <div class="tile active o"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
             </div>
         </section>
 

@@ -1,5 +1,3 @@
-console.log("OK");
-
 var tiles = document.getElementsByClassName("tile");
 var solutions = [
 	[ //Solution for tile 0.
@@ -48,10 +46,21 @@ var solutions = [
 
 var isXTurn = true;
 
-
-window.addEventListener('load', function(){
+function initGame() {
 	initTiles();
-});
+	isXTurn = true;
+
+
+}
+
+function initTiles() {
+	for (var i = 0; i<tiles.length;i++) {
+		var tile = tiles[i];
+
+		tile.addEventListener('click', onTileClick);
+		tile.classList.remove("active", "x", "o");
+	}
+}
 
 function takeTile( tile ) {
 	if (isXTurn) {
@@ -65,19 +74,12 @@ function takeTile( tile ) {
 
 function onTileClick(event) {
 	var tile = event.target;
-	var tileIsAlreadyTaken = (
-		tile.classList.contains("x") ||
-		tile.classList.contains("o")
-	);
-	if ( !tileIsAlreadyTaken ) {
-		takeTile( tile );
-	}
+
+	takeTile( tile );
+
+	tile.removeEventListener('click', onTileClick);
 }
 
-function initTiles() {
-	for (var i = 0; i<tiles.length;i++) {
-		var tile = tiles[i];
-
-		tile.addEventListener('click', onTileClick);
-	}
-}
+window.addEventListener('load', function(){
+	initTiles();
+});

@@ -4,16 +4,25 @@ var tiles = document.getElementsByClassName("tile");
 
 
 window.addEventListener('load', function(){
-	for(var i = 0; i<tiles.length;i++)
-	{
-		var tile = tiles[i];
-		console.log(i);
+	initTiles();
+});
 
-		tile.addEventListener('click', function(event){
-			if((!event.target.classList.contains("x") && (!event.target.classList.contains("o"))))
-			{
-				event.target.classList.add("active","x");
+function takeTile( tile ) {
+	tile.classList.add("active","x");
+}
+
+function initTiles() {
+	for (var i = 0; i<tiles.length;i++) {
+		var tile = tiles[i];
+
+		tile.addEventListener('click', function(event) {
+			var tileIsAlreadyTaken = (
+				!event.target.classList.contains("x") &&
+				!event.target.classList.contains("o")
+			);
+			if ( !tileIsAlreadyTaken ) {
+				takeTile( event.target );
 			}
 		});
 	}
-});
+}

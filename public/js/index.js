@@ -11,18 +11,21 @@ function takeTile( tile ) {
 	tile.classList.add("active","x");
 }
 
+function onTileClick(event) {
+	var tile = event.target;
+	var tileIsAlreadyTaken = (
+		tile.classList.contains("x") ||
+		tile.classList.contains("o")
+	);
+	if ( !tileIsAlreadyTaken ) {
+		takeTile( tile );
+	}
+}
+
 function initTiles() {
 	for (var i = 0; i<tiles.length;i++) {
 		var tile = tiles[i];
 
-		tile.addEventListener('click', function(event) {
-			var tileIsAlreadyTaken = (
-				!event.target.classList.contains("x") &&
-				!event.target.classList.contains("o")
-			);
-			if ( !tileIsAlreadyTaken ) {
-				takeTile( event.target );
-			}
-		});
+		tile.addEventListener('click', onTileClick);
 	}
 }

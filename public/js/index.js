@@ -46,12 +46,21 @@ var solutions = [
 	],
 ];
 
+var isXTurn = true;
+
+
 window.addEventListener('load', function(){
 	initTiles();
 });
 
 function takeTile( tile ) {
-	tile.classList.add("active","x");
+	if (isXTurn) {
+		tile.classList.add("active","x");
+	} else {
+		tile.classList.add("active","o");
+	}
+
+	isXTurn = !isXTurn;
 }
 
 function onTileClick(event) {

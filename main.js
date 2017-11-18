@@ -8,9 +8,8 @@ var app = express();
 app.use(express.static("public"));
 
 app.get('/', function(req, res){
-    var indexFilePath = path.join(__dirname, "views", "index.html");
-    
-    res.sendFile(indexFilePath);
+	var indexFilePath = path.join(__dirname, "views", "index.html");
+	res.sendFile(indexFilePath);
 });
 
 app.listen(3000);

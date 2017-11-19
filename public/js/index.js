@@ -60,14 +60,78 @@ function initTiles() {
 	}
 }
 
+function endTurn( tile ) {
+	var winner = checkGameCompletion( tile );
+	if ( [ "x", "o", null ].includes( winner ) ) {
+
+		// End the game!
+		if ( winner === null ) {
+			console.log( "It's a draw!" );
+		} else {
+			console.log( winner + " WON!" );
+		}
+		return;
+	}
+
+	isXTurn = !isXTurn;
+}
+
+function tileIndexIsNotOur( tileIndexToValidate ) {
+	var valueToCheck = isXTurn ? "x" : "o";
+	var tileToCheck = tiles[ tileIndexToValidate ];
+	var tileIsOur = tileToCheck.classList.contains( valueToCheck );
+	return !tileIsOur;
+}
+
+function checkGameCompletion( tile ) {
+
+	var valueOfCurrentTurn = isXTurn ? "x" : "o";
+
+	// Find index of given tile
+	var indexOftile = -1;
+	for ( var i = 0; i < tiles.length; i++ ) {
+		if ( tiles[ i ] === tile ) {
+			indexOftile = i;
+			break;
+		}
+	}
+
+	// If tile index not found, ERROR
+	if ( indexOftile === -1 ) {
+
+		// ERROR
+		return undefined;
+	}
+
+	// Check if game is won
+	var solutionFound = false;
+	var solutionsForTile = solutions[ indexOftile ];
+	for ( var solutionIndex in solutionsForTile ) {
+		var solution = solutionsForTile[ solutionIndex ];
+		solutionFound = !solution.some( tileIndexIsNotOur );
+		if ( solutionFound ) {
+			return valueOfCurrentTurn;
+		}
+	}
+
+	// Check if game is null
+	var isDraw = !Array.from( tiles ).some( function( _tile ) {
+		return !_tile.classList.contains( "active" );
+	} );
+
+	if ( isDraw ) {
+		return null;
+	}
+
+	return undefined;
+}
+
 function takeTile( tile ) {
 	if ( isXTurn ) {
 		tile.classList.add( "active", "x" );
 	} else {
 		tile.classList.add( "active", "o" );
 	}
-
-	isXTurn = !isXTurn;
 }
 
 function onTileClick( event ) {
@@ -76,6 +140,8 @@ function onTileClick( event ) {
 	takeTile( tile );
 
 	tile.removeEventListener( "click", onTileClick );
+
+	endTurn( tile );
 }
 
 window.addEventListener( "load", function() {
